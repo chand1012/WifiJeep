@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import serial
 from time import sleep
 arduino = serial.Serial('/dev/ttyACM0', 9600)
