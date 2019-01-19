@@ -25,7 +25,7 @@ def worker():
     data = request.get_json(force=True)
     sendbyte = None
     for thing in data:
-        if thing["byte"]:
+        if thing["byte"]!=None:
             print("Sending %s" % str(thing["byte"]))
             sendbyte = str(thing["byte"]).encode()
     arduino.write(sendbyte)
