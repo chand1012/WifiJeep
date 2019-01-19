@@ -34,7 +34,7 @@ while True:
         if command=='':
             pass
         else:
-            print('Command sent: %s' % command)
+            print('%s' % command)
             bytecmd = command.encode()
             arduino.write(bytecmd)
     client.close()
