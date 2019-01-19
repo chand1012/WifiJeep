@@ -30,19 +30,10 @@ while True:
         # gets command from client and processes it
         if command=='':
             pass
-        elif command=='on':
-            print("Turning on")
-            arduino.write(b'1')
-        elif command=='off':
-            print("Turning off")
-            arduino.write(b'0')
-        elif command=='stop':
-            break            
-        elif command=='exit':
-            client.close()
-            sys.exit(0)
         else:
-            pass
+            print('Command sent: %s' % command)
+            bytecmd = b'%s' % command
+            arduino.write(bytecmd)
     client.close()
 
         
