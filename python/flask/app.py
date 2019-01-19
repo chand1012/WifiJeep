@@ -17,7 +17,7 @@ codes = {
 def index():
     global arduino 
     arduino = serial.Serial('/dev/ttyACM0', 9600)
-    data = request.get_json(force=True)
+    data = request.get_json()
     sendbyte = None
     print(str(data))
     for thing in data:
