@@ -37,7 +37,6 @@ while True:
             print('%s' % command)
             bytecmd = command.encode()
             arduino.write(bytecmd)
-            time.sleep(1/30)
     client.close()
 
         
