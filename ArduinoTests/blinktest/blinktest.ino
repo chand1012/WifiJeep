@@ -4,7 +4,7 @@ int n;
 void setup() {
   pinMode(ledPin, OUTPUT);
   Serial.begin(9600);
-  n = 7;
+  n = 0;
 }
 
 void loop() {
