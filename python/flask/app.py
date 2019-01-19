@@ -3,8 +3,8 @@ import sys, json, random
 from time import time, sleep
 import serial
 
-arduino = serial.Serial('/dev/ttyACM0', 9600)
-arduino.write(b'0')
+arduino = None
+
 app = Flask(__name__)
 codes = {
     "straight":b'0',
@@ -17,6 +17,7 @@ codes = {
 
 @app.route("/")
 def index():
+    arduino = serial.Serial('/dev/ttyACM0', 9600)
     return render_template("index.html")
 '''
 @app.route("/postrequest", methods = ['POST'])
