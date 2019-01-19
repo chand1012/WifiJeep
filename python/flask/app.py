@@ -35,31 +35,37 @@ def worker():
 @app.route('/forward')
 def forward():
     data = request.get_json(force=True)
+    print(data)
     arduino.write(codes["forward"])
 
 @app.route('/backward')
 def backward():
     data = request.get_json(force=True)
+    print(data)
     arduino.write(codes["backward"])
 
 @app.route('/right')
 def right():
     data = request.get_json(force=True)
+    print(data)
     arduino.write(codes["right"])
 
 @app.route('/left')
 def left():
     data = request.get_json(force=True)
+    print(data)
     arduino.write(codes["left"])
 
 @app.route('/coast')
 def coast():
     data = request.get_json(force=True)
+    print(data)
     arduino.write(codes["coast"])
 
 @app.route('/straight')
 def straight():
     data = request.get_json(force=True)
+    print(data)
     arduino.write(codes["straight"])
 
 if __name__=="__main__":
