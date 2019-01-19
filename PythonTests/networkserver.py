@@ -9,8 +9,10 @@ server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
 host = sys.argv[1]
-port = sys.argv[2]
-if port=='':
+port = None
+try:
+    port = sys.argv[2]
+except IndexError:
     port = 1166
 
 server.bind((host, port))
