@@ -23,7 +23,8 @@ AF_DCMotor steer(STEER);
 unsigned int steerState = STRAIGHT; //states will hold unless otherwise told
 unsigned int driveState = COAST;
 unsigned int recv;
-unsigned int n;
+unsigned int d;
+unsigned int s;
 
 void setup() {
     Serial.begin(9600);
@@ -34,20 +35,27 @@ void setup() {
 
 void loop() {
     if(Serial.available()){ //read the serial
-        n = Serial.read() - '0';
+        recv = Serial.read() - '0';
+        if (recv>=RIGHT || recv==STRAIGHT ) {
+            s = recv
+        } else if (recv>0 && recv<4) {
+            d = recv
+        } else {
+            n = recv
+        }
     }
      
-    if (n==STRAIGHT){ //interpret the numbers
+    if (s==STRAIGHT){ //interpret the numbers
         steer.run(RELEASE);
-    } else if (n==COAST) {
+    } else if (d==COAST) {
         drive.run(RELEASE);
-    } else if (n==BACK) {
+    } else if (d==BACK) {
         drive.run(BACKWARD);
-    } else if (n==FORW) {
+    } else if (d==FORW) {
         steer.run(FORWARD);
-    } else if (n==LEFT) {
+    } else if (s==LEFT) {
         steer.run(BACKWARD);
-    } else if (n==RIGHT) {
+    } else if (s==RIGHT) {
         steer.run(FORWARD);
     } 
 }
