@@ -12,15 +12,15 @@ codes = {
     "right":b'4',
     "left":b'5'
 }
-value = 0
+value = 'coast'
 
 app = Flask(__name__)
 @app.route("/", methods = ['POST', 'GET'])
 def index():
     arduino = serial.Serial('/dev/ttyACM0', 9600)
     if request.method is 'POST':
-        button = request.form['submit'].lower()
-        arduino.write(codes[button])
+        value = request.form['submit'].lower()
+        arduino.write(codes[value])
 
     return render_template('index2.html', value=value)
 
