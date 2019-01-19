@@ -23,8 +23,11 @@ def index():
 def worker():
     #moved forward
     data = request.get_json()
-    print("Sending %s" % str(data["byte"]))
-    sendbyte = str(data["byte"]).encode()
+    sendbyte = None
+    for thing in data:
+        if thing["byte"]:
+            print("Sending %s" % str(thing["byte"]))
+            sendbyte = str(thing["byte"]).encode()
     arduino.write(sendbyte)
 
 if __name__=="__main__":
