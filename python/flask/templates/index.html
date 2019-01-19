@@ -13,17 +13,16 @@
             "left":{"byte":5}
         }
 
-
         function doWork(buttonid){
             $.post(buttonid, jeepJson[buttonid], function(){});
             event.preventDefault();
         }
     </script>
     <h1>Press to activate car</h1>
-    <button id="forward">Forward</button>
-    <button id="backward">Back</button>
-    <button id="left">Left</button>
-    <button id="right">Right</button>
-    <button id="straight">Straight</button>
-    <button id="coast">Coast</button>
+    <button id="forward" onclick="doWork()">Forward</button>
+    <button id="backward" onclick="doWork()">Back</button>
+    <button id="left" onclick="doWork()">Left</button>
+    <button id="right" onclick="doWork()">Right</button>
+    <button id="straight" onclick="doWork()">Straight</button>
+    <button id="coast" onclick="doWork()">Coast</button>
 </html>
