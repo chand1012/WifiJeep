@@ -24,10 +24,11 @@ def worker():
     #moved forward
     data = request.get_json(force=True)
     sendbyte = None
+    print(str(data))
     for thing in data:
-        if thing["byte"]!=None:
-            print("Sending %s" % str(thing["byte"]))
-            sendbyte = str(thing["byte"]).encode()
+        
+        print("Sending %s" % str(thing["byte"]))
+        sendbyte = str(thing["byte"]).encode()
     arduino.write(sendbyte)
 
 if __name__=="__main__":
