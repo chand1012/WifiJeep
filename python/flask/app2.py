@@ -11,10 +11,10 @@ codes = {
     "right":b'4',
     "left":b'5'
 }
+arduino = serial.Serial('/dev/ttyACM0', 9600)
 app = Flask(__name__)
 @app.route("/", methods = ['POST', 'GET'])
-def index():
-    arduino = serial.Serial('/dev/ttyACM0', 9600)
+def index(arduino=arduino):
     if request.method is 'POST':
         value = request.form['submit'].lower()
         arduino.write(codes[value])
