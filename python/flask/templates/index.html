@@ -4,17 +4,17 @@
         <title>WifiJeep</title>
     </head>
     <script type="text/javascript">
-        var jeepJson = [
+        var jeepJson = {
             "straight":{"byte":0},
             "coast":{"byte":1},
             "forward":{"byte":2},
             "backward":{"byte":3},
             "right":{"byte":4},
             "left":{"byte":5}
-        ];
+            };
 
         function doWork(buttonid){
-            $.post("postrequest", jeepJson[buttonid], function(){});
+            $.post(buttonid, jeepJson[buttonid], function(){});
             event.preventDefault();
         }
     </script>
