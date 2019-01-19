@@ -34,7 +34,7 @@ while True:
             arduino.write(b'0')
         elif command=='stop':
             break            
-        elif command=='exit' or int(command)==-1:
+        elif command=='exit':
             client.close()
             sys.exit(0)
         else:
