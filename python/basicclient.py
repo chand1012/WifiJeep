@@ -15,11 +15,14 @@ print("Starting client to {} on port {}...".format(host, port))
 s.connect((host, port))
 print("Connected!")
 n = 0
+keydown = False
 while True:
         for event in pygame.event.get():
                 if event.type == pygame.QUIT:
-                        sys.exit(0)
-                        s.close()
+                    sys.exit(0)
+                    s.close()
+                if event.type == pygame.KEYDOWN:
+                    keydown = True
         
         pressed = pygame.key.get_pressed()
         if pressed[pygame.K_UP]: 
@@ -38,7 +41,8 @@ while True:
 
         if pressed[pygame.K_ESCAPE]:
             pygame.quit()
-            
-        s.send(str(n).encode('ascii'))
-        
+
+        if keydown:
+            s.send(str(n).encode('ascii'))
+        pygame.display.update()
         
