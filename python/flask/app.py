@@ -22,7 +22,7 @@ def index():
 @app.route("/postrequest", methods = ['POST'])
 def worker():
     #moved forward
-    data = request.get_json()
+    data = request.get_json(force=True)
     sendbyte = None
     for thing in data:
         if thing["byte"]:
