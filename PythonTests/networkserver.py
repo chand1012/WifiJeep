@@ -7,7 +7,7 @@ arduino = serial.Serial('/dev/ttyACM0', 9600) #this will change if running this 
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-host = 'localhost'
+host = socket.gethostname()
 
 port = 1166
 
