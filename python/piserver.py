@@ -1,10 +1,13 @@
 import socket
 import sys
-import signal
 import serial
+import time
 
 # literally just takes whatever it receives 
 # and forwards it to the arduino
+
+def mstime():
+    return int(round(time.time() * 1000))
 
 arduino = serial.Serial('/dev/ttyACM0', 9600) #this will change if running this on windows but this is for linux
 arduino.write(b'0')
@@ -28,15 +31,16 @@ while True:
     print("Connection from %s" % str(addr))
 
     while True:
-        cmd = client.recv(1024)
-        command = cmd.decode('ascii').strip()
-        # gets command from client and processes it
-        if command=='':
-            pass
-        else:
-            print('%s' % command)
-            bytecmd = command.encode()
-            arduino.write(bytecmd)
+        if mstime()%10==0: # only execute 10 times a second
+            cmd = client.recv(1024)
+            command = cmd.decode('ascii').strip()
+            # gets command from client and processes it
+            if command=='':
+                pass
+            else:
+                print('%s' % command)
+                bytecmd = command.encode()
+                arduino.write(bytecmd)
     client.close()
 
         

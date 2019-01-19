@@ -1,8 +1,5 @@
 import pygame, sys
 import socket
-import datetime
-
-mstime = lambda: datetime.now().microseconds
 
 host = sys.argv[1]
 port = None
@@ -45,7 +42,6 @@ while True:
         if pressed[pygame.K_ESCAPE]:
             pygame.quit()
 
-        if keydown and mstime%2==0:
-            s.send(str(n).encode('ascii'))
+        s.send(str(n).encode('ascii'))
         pygame.display.update()
         
