@@ -32,7 +32,7 @@ while True:
             pass
         else:
             print('Command sent: %s' % command)
-            bytecmd = b'%s' % command
+            bytecmd = b'%b' % command
             arduino.write(bytecmd)
     client.close()
 
