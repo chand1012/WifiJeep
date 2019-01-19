@@ -17,7 +17,7 @@ codes = {
 
 @app.route("/")
 def index():
-    arduino = serial.Serial('/dev/ttyACM0', 9600)
+    global arduino = serial.Serial('/dev/ttyACM0', 9600)
     return render_template("index.html")
 '''
 @app.route("/postrequest", methods = ['POST'])
