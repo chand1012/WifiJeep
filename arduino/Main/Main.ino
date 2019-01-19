@@ -25,6 +25,7 @@ unsigned int driveState = COAST;
 unsigned int recv;
 unsigned int d;
 unsigned int s;
+unsigned int n;
 
 void setup() {
     Serial.begin(9600);
@@ -37,11 +38,11 @@ void loop() {
     if(Serial.available()){ //read the serial
         recv = Serial.read() - '0';
         if (recv>=RIGHT || recv==STRAIGHT ) {
-            s = recv
+            s = recv;
         } else if (recv>0 && recv<4) {
-            d = recv
+            d = recv;
         } else {
-            n = recv
+            n = recv;
         }
     }
      
