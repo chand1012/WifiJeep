@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+        <title>WifiJeep</title>
+    </head>
+    <script type="text/javascript">
+        var jeepJson = {
+            "straight":{"byte":0},
+            "coast":{"byte":1},
+            "forward":{"byte":2},
+            "backward":{"byte":3},
+            "right":{"byte":4},
+            "left":{"byte":5}
+        }
+
+
+        function doWork(buttonid){
+            $.post(buttonid, jeepJson[buttonid], function(){});
+            event.preventDefault();
+        }
+    </script>
+    <h1>Press to activate car</h1>
+    <button id="forward">Forward</button>
+    <button id="backward">Back</button>
+    <button id="left">Left</button>
+    <button id="right">Right</button>
+    <button id="straight">Straight</button>
+    <button id="coast">Coast</button>
+</html>
