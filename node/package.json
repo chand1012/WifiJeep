@@ -1,0 +1,25 @@
+{
+  "name": "wifijeep",
+  "version": "0.0.1",
+  "description": "wifi controlled car",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chand1012/WifiJeep.git"
+  },
+  "keywords": [
+    "pi"
+  ],
+  "author": "chand1012",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chand1012/WifiJeep/issues"
+  },
+  "homepage": "https://github.com/chand1012/WifiJeep#readme",
+  "dependencies": {
+    "serialport": "^7.1.3"
+  }
+}
