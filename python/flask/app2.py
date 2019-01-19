@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, Response
 import serial
 
 global arduino
-global value
 global codes
 codes = {
     "straight":b'0',
@@ -12,7 +11,7 @@ codes = {
     "right":b'4',
     "left":b'5'
 }
-
+value = 'coast'
 app = Flask(__name__)
 @app.route("/", methods = ['POST', 'GET'])
 def index():
