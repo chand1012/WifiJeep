@@ -1,3 +1,6 @@
 [submodule "Adafruit-Motor-Shield-library"]
 	path = Adafruit-Motor-Shield-library
 	url = https://github.com/adafruit/Adafruit-Motor-Shield-library.git
+[submodule "pygame-text-input"]
+	path = pygame-text-input
+	url = https://github.com/Nearoo/pygame-text-input.git
