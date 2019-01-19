@@ -24,6 +24,10 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+PythonTests/__pycache__
+PythonTests/build
+PythonTests/dist
+PythonTests/networkclientCharlie.py
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
