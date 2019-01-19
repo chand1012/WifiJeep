@@ -14,7 +14,7 @@ codes = {
 value = 'coast'
 app = Flask(__name__)
 @app.route("/", methods = ['POST', 'GET'])
-def index():
+def index(value):
     arduino = serial.Serial('/dev/ttyACM0', 9600)
     if request.method is 'POST':
         value = request.form['submit'].lower()
