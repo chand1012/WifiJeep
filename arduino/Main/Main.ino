@@ -39,7 +39,7 @@ void loop() {
         recv = Serial.read() - '0';
         if (recv>=RIGHT || recv==STRAIGHT ) {
             s = recv;
-        } else if (recv>0 && recv<4) {
+        } else if (recv>STRAIGHT && recv<RIGHT) {
             d = recv;
         } else {
             n = recv;
@@ -61,3 +61,4 @@ void loop() {
     } 
 }
 // Tested: Yay it works!
+// Needs a 10uF connected between GND and RESET so that RAM isn't cleared 

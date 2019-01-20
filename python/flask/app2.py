@@ -22,7 +22,7 @@ def index():
         try:
             for i in range(5):
                 arduino = serial.Serial('COM%i' % i, 9600)
-        except SerialException:
+        except:
                 pass
 
     if request.method is 'POST':
