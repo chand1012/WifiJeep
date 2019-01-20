@@ -19,6 +19,8 @@ def index():
 
     if request.method is 'POST':
         value = request.form['submit'].lower()
+        print(value)
+        print(codes[value])
         #arduino = serial.Serial("COM4", 9600) # uncomment on windows
         arduino = serial.Serial('/dev/ttyACM0', 9600) # uncomment on Linux
         arduino.write(codes[value])
