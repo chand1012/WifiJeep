@@ -16,19 +16,16 @@ app = Flask(__name__)
 @app.route("/", methods = ['POST', 'GET'])
 def index():
     arduino = None
-    if sys.platform!="win32":
-        arduino = serial.Serial('/dev/ttyACM0', 9600)
-    else:
-        try:
-            for i in range(5):
-                arduino = serial.Serial('COM%i' % i, 9600)
-        except:
-                pass
 
-    if request.method is 'POST':
+    try:
         value = request.form['submit'].lower()
+        arduino = serial.Serial("COM4", 9600) # uncomment on windows
+        #arduino = serial.Serial('/dev/ttyACM0', 9600) # uncomment on Linux   
         arduino.write(codes[value])
-    arduino.close()
+        arduino.close()
+    except:
+        print("Ignoring non post request")
+    
     return render_template('index2.html')
 
 if __name__=="__main__":
