@@ -17,14 +17,12 @@ app = Flask(__name__)
 def index():
     arduino = None
 
-    try:
+    if request.method is 'POST':
         value = request.form['submit'].lower()
-        arduino = serial.Serial("COM4", 9600) # uncomment on windows
-        #arduino = serial.Serial('/dev/ttyACM0', 9600) # uncomment on Linux   
+        #arduino = serial.Serial("COM4", 9600) # uncomment on windows
+        arduino = serial.Serial('/dev/ttyACM0', 9600) # uncomment on Linux
         arduino.write(codes[value])
         arduino.close()
-    except:
-        print("Ignoring non post request")
     
     return render_template('index2.html')
 
