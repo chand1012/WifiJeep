@@ -3,16 +3,18 @@ import sys
 import signal
 import serial
 
-arduino = serial.Serial('/dev/ttyACM0', 9600) #this will change if running this on windows but this is for linux
+arduino = serial.Serial('COM4', 9600) #this will change if running this on windows but this is for linux
 arduino.write(b'0')
 server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 server.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 
-host = sys.argv[1]
 port = None
+host = None
 try:
+    host = sys.argv[1]
     port = int(sys.argv[2])
 except IndexError:
+    host = 'localhost'
     port = 1166
 
 server.bind((host, port))
