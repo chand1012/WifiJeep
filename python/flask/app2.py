@@ -1,8 +1,7 @@
-from flask import Flask, render_template, request, redirect, Response
-import serial, sys
+from flask import Flask, render_template, request
+import serial
 
-global arduino
-global codes
+app = Flask(__name__)
 codes = {
     "straight":b'0',
     "coast":b'1',
@@ -12,21 +11,18 @@ codes = {
     "left":b'5'
 }
 
-app = Flask(__name__)
-@app.route("/", methods = ['POST', 'GET'])
-def index():
-    arduino = None
+#arduino = serial.Serial('/dev/ttyACM0', 9600)
+arduino = serial.Serial('COM4', 9600)
 
-    if request.method is 'POST':
-        value = request.form['submit'].lower()
-        print(value)
-        print(codes[value])
-        #arduino = serial.Serial("COM4", 9600) # uncomment on windows
-        arduino = serial.Serial('/dev/ttyACM0', 9600) # uncomment on Linux
-        arduino.write(codes[value])
-        arduino.close()
-    
-    return render_template('index2.html')
+@app.route("/")
+def index():
+    return render_template("index.html")
+
+@app.route("/postrequest", methods = ['POST'])
+def worker():
+    data = request.form['byte']
+    arduino.write(codes[data])
+    return data
 
 if __name__=="__main__":
     app.run('0.0.0.0', "1166", debug=True)
