@@ -13,7 +13,7 @@
             $.post("/postrequest", {"byte":buttonid});
             event.preventDefault();
         }
-        document.addEventListener('keydown', function(event){
+        window.addEventListener('keydown', function(event){
             if (getUltraLiveTime()%1000==0) { // check if time is divisible by 1000
                 console.log(toString(event.keyCode));
                 if (event.keyCode == 38) { // forward
