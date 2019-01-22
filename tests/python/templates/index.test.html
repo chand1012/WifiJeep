@@ -10,6 +10,13 @@
             $.post("/postrequest", {"byte":buttonid});
 
         } 
+
+        // the following functions were from the web-camera-recorder git repo
+        // I compressed them with JQuery since I have it CDN'd already
+        function recordButton(data) { 
+            $.post("/record_status", {status: data});
+        }
+
         window.addEventListener('keydown', function(event){
             if (!isKeyDown) { // check if time has passed
                 //console.log(toString(event.keyCode));
@@ -44,6 +51,9 @@
         console.log("Script Loaded.");
     </script>
     <h1>Press to activate car</h1>
+    <button id="record" onclick="recordButton('true')">Record</button>
+    <button id="stop" onclick="stopButton('false')">Stop</button>
+    <img id="video" src="{{ url_for('video_viewer')}}">
     <button id="forward" onclick="doWork(this.id)">Forward</button>
     <button id="backward" onclick="doWork(this.id)">Back</button>
     <button id="left" onclick="doWork(this.id)">Left</button>
