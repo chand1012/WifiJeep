@@ -6,23 +6,23 @@
     <script type="text/javascript">
         var lastkeypress = 0;
         var currentkeypress;
-        function getUltraLiveTime(){ // this needs fixed
+        function getUltraLiveTime(){ 
             var d = new Date();
             var t = d.getTime();
             return t;
         }
         function doWork(buttonid, event){
             $.post("/postrequest", {"byte":buttonid});
+            console.log(buttonid);
             if (event!=="undefined") {
                 event.preventDefault();
             }
         }
         window.addEventListener('keydown', function(event){
             currentkeypress = getUltraLiveTime();
-            //console.log(getUltraLiveTime());
-            if (currentkeypress>=lastkeypress) { // check if time is divisible by 1000
+            if (currentkeypress>=lastkeypress) { // check if time has passed
                 console.log(toString(event.keyCode));
-                lastkeypress = currentkeypress + 500; // for now 500 seems good, may change later
+                lastkeypress = currentkeypress + 500; // for now 500ms seems good, may change later
                 if (event.keyCode == 38) { // forward
                     doWork("forward", event);
                 } else if (event.keyCode == 40) { // backward

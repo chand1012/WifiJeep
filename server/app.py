@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-import serial
+import serial, sys
 
 app = Flask(__name__)
 codes = {
@@ -11,8 +11,12 @@ codes = {
     "left":b'5'
 }
 
-#arduino = serial.Serial('/dev/ttyACM0', 9600)
-arduino = serial.Serial('COM4', 9600)
+arduino = None
+
+if sys.platform=="win32":
+    arduino = serial.Serial('COM4', 9600)
+else:
+    arduino = serial.Serial('/dev/ttyACM0', 9600)
 
 @app.route("/")
 def index():
