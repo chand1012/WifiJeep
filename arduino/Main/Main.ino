@@ -13,7 +13,8 @@
 #define STEER 1 //these are subject to change
 #define DRIVE 3 //they define the motor number on the motor shield
 
-#define POWAH 255
+#define DRIVEPOWER 255
+#define STEERPOWER 128
 
 #include <AFMotor.h>
 
@@ -29,8 +30,8 @@ unsigned int n;
 
 void setup() {
     Serial.begin(9600);
-    drive.setSpeed(POWAH);
-    steer.setSpeed(POWAH);
+    drive.setSpeed(DRIVEPOWER);
+    steer.setSpeed(STEERPOWER);
     Serial.write("Initialized.");
 }
 
@@ -61,4 +62,4 @@ void loop() {
     } 
 }
 // Tested: Yay it works!
-// may port to a single L329D
+// may port to a single L293D
