@@ -7,7 +7,7 @@ app = Flask(__name__)
 video_camera = None
 global_frame = None
 
-def video_stream(): # this is whats breaking it
+def video_stream(): # this is the issue
     
     if video_camera == None:
         video_camera = VideoCamera()
@@ -35,6 +35,7 @@ def worker():
     print("POST request recieved: sent %s" % data)
     return data
 
+@app.route("/record_status", methods=['POST'])
 def record_status():
     global video_camera 
     if video_camera == None:
