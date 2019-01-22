@@ -4,37 +4,41 @@
         <title>WifiJeep</title>
     </head>
     <script type="text/javascript">
-        var lastkeypress = 0;
-        var currentkeypress;
-        function getUltraLiveTime(){ // this needs fixed
-            var d = new Date();
-            var t = d.getTime();
-            return t;
-        }
+        var isKeyDown = false;
         function doWork(buttonid, event){
             console.log(buttonid);
+            $.post("/postrequest", {"byte":buttonid});
+
         } 
         window.addEventListener('keydown', function(event){
-            currentkeypress = getUltraLiveTime();
-            //console.log(getUltraLiveTime());
-            if (currentkeypress>=lastkeypress) { //check if 250ms 
-                console.log(toString(event.keyCode));
-                lastkeypress = currentkeypress + 500; // for now 500 seems good, may change later
+            if (!isKeyDown) { // check if time has passed
+                //console.log(toString(event.keyCode));
                 if (event.keyCode == 38) { // forward
                     doWork("forward", event);
+                    isKeyDown = true;
                 } else if (event.keyCode == 40) { // backward
                     doWork("backward", event);
-                } else { // coast
-                    doWork("coast", event);
+                    isKeyDown = true;
                 }
 
                 if (event.keyCode == 37) { // left
                     doWork("left", event);
+                    isKeyDown = true;
                 } else if (event.keyCode == 39) { // right
                     doWork("right", event);
-                } else { // straight
-                    doWork("straight", event);
+                    isKeyDown = true;
                 }
+            }
+        });
+
+        window.addEventListener('keyup', function(event){
+            if (event.keyCode == 38 || event.keyCode == 40 ){
+                doWork("coast", event);
+                isKeyDown = false;
+            }
+            if (event.keyCode == 37 || event.keyCode == 39){
+                doWork("straight", event);
+                isKeyDown = false;
             }
         });
         console.log("Script Loaded.");
