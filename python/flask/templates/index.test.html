@@ -12,15 +12,12 @@
             return t;
         }
         function doWork(buttonid, event){
-            $.post("/postrequest", {"byte":buttonid});
-            if (event!=="undefined") {
-                event.preventDefault();
-            }
-        }
+            console.log(buttonid);
+        } 
         window.addEventListener('keydown', function(event){
             currentkeypress = getUltraLiveTime();
             //console.log(getUltraLiveTime());
-            if (currentkeypress>=lastkeypress) { // check if time is divisible by 1000
+            if (currentkeypress>=lastkeypress) { //check if 250ms 
                 console.log(toString(event.keyCode));
                 lastkeypress = currentkeypress + 500; // for now 500 seems good, may change later
                 if (event.keyCode == 38) { // forward
