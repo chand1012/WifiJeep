@@ -61,4 +61,4 @@ void loop() {
     } 
 }
 // Tested: Yay it works!
-// Needs a 10uF connected between GND and RESET so that RAM isn't cleared 
+// may port to a single L329D
