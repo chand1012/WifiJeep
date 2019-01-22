@@ -1,5 +1,4 @@
-from flask import Flask, render_template, request, redirect, Response
-import sys, json
+from flask import Flask, render_template, request
 import serial
 
 app = Flask(__name__)
@@ -12,15 +11,18 @@ codes = {
     "left":b'5'
 }
 
-def arduinowrite():
-    arduino = serial.Serial('COM4', 9600)
-    arduino.write()
+#arduino = serial.Serial('/dev/ttyACM0', 9600)
+arduino = serial.Serial('COM4', 9600)
 
-
-@app.route("/", methods = ['POST', 'GET'])
+@app.route("/")
 def index():
-    
     return render_template("index.html")
+
+@app.route("/postrequest", methods = ['POST'])
+def worker():
+    data = request.form['byte']
+    arduino.write(codes[data])
+    return data
 
 if __name__=="__main__":
     app.run('0.0.0.0', "1166", debug=True)
