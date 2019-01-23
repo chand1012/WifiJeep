@@ -4,11 +4,12 @@ from webcamera import VideoCamera
 
 app = Flask(__name__)
 
-video_camera = None
-global_frame = None
 
 def video_stream(): # this is the issue
-    
+    global video_camera
+    global global_frame
+    video_camera = None
+    global_frame = None
     if video_camera == None:
         video_camera = VideoCamera()
     
@@ -31,7 +32,6 @@ def index():
 @app.route("/postrequest", methods = ['POST'])
 def worker():
     data = request.form['byte']
-    #arduino.write(codes[data])
     print("POST request recieved: sent %s" % data)
     return data
 

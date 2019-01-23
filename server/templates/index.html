@@ -7,14 +7,13 @@
         var isKeyDown = false;
         function doWork(buttonid, event){
             $.post("/postrequest", {"byte":buttonid});
-            console.log(buttonid);
+            //console.log(buttonid);
             if (event!=="undefined") {
                 event.preventDefault();
             }
         }
         window.addEventListener('keydown', function(event){
-            if (!isKeyDown) { // check if time has passed
-                //console.log(toString(event.keyCode));
+            if (!isKeyDown) { // check if the key is not down
                 if (event.keyCode == 38) { // forward
                     doWork("forward", event);
                     isKeyDown = true;
