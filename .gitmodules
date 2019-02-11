@@ -1,6 +1,3 @@
 [submodule "Adafruit-Motor-Shield-library"]
 	path = Adafruit-Motor-Shield-library
 	url = https://github.com/adafruit/Adafruit-Motor-Shield-library.git
-[submodule "web-camera-recorder"]
-	path = web-camera-recorder
-	url = https://github.com/yushulx/web-camera-recorder.git
