@@ -21,12 +21,10 @@
 AF_DCMotor drive(DRIVE); 
 AF_DCMotor steer(STEER);
 
-unsigned int steerState = STRAIGHT; //states will hold unless otherwise told
-unsigned int driveState = COAST;
 unsigned int recv;
-unsigned int d;
-unsigned int s;
-unsigned int n;
+//these are the states
+unsigned int d = COAST; //states will hold unless otherwise told
+unsigned int s = STRAIGHT;
 
 void setup() {
     Serial.begin(9600);
@@ -42,8 +40,6 @@ void loop() {
             s = recv;
         } else if (recv>STRAIGHT && recv<RIGHT) {
             d = recv;
-        } else {
-            n = recv;
         }
     }
      
